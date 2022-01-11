@@ -56,7 +56,7 @@ done
       date >>hosts.log  
         for h in ${hosts[@]}  
         do  
-	        curl -Is --connect-timeout $timeout $h:80 >/dev/null  
+	  curl -Is --connect-timeout $timeout $h:80 >/dev/null  
           echo "    check" $h status=$? >>hosts.log  
         done  
     done 
@@ -74,12 +74,12 @@ done
     do
         for h in ${hosts[@]}
         do
-	        curl -Is --connect-timeout $timeout $h:80 >/dev/null
-	        res=$?
-	        if (($res != 0))
-	        then
-	          echo "    ERROR on " $h status=$res >>hosts2.log
-	        fi
+	  curl -Is --connect-timeout $timeout $h:80 >/dev/null
+	  res=$?
+	  if (($res != 0))
+	  then
+	    echo "    ERROR on " $h status=$res >>hosts2.log
+	  fi
         done
     done
 ```
