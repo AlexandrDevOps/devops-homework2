@@ -39,17 +39,23 @@ for result in result_os.split('\n'):
 ```python
 import os
 
-bash_command = ["cd C:/Users/KOT/devops-netology", "git status"]
+bash_command = ["cd c:/Users/KOT/devops-netology", "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
 for result in result_os.split('\n'):
-    if result.find('изменено') != -1:
-        prepare_result = result.replace('\tизменено:   ', '')
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
         print(prepare_result)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+C:\Users\KOT\AppData\Local\Programs\Python\Python39\python.exe C:/Users/KOT/script.py
+
+README.md
+TestFile1
+TestFile3
+
+Process finished with exit code 0
 ```
 
 ## Обязательная задача 3
@@ -70,17 +76,30 @@ print('\033[31m')
 result_os = os.popen(' && '.join(bash_command)).read()
 for result in result_os.split('\n'):
     if result.find('fatal') != -1:
-        print('\033[31m Каталог \033[1m '+cmd+'\033[0m\033[31m не является GIT репозиторием\033[0m')    
+        print('\033[31m Каталог \033[1m '+cmd+'\033[0m\033[31m не является GIT репозиторием\033[0m')
     if result.find('изменено') != -1:
         prepare_result = result.replace('\tизменено: ', '')
-        prepare_result = prepare_result.replace(' ', '') 
+        prepare_result = prepare_result.replace(' ', '')
         print(cmd+prepare_result)
 print('\033[0m')
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+C:\Users\KOT\AppData\Local\Programs\Python\Python39\python.exe C:/Users/KOT/script3.py
+
+Каталог  C:\Users\KOT не является GIT репозиторием
+
+Process finished with exit code 0
+```
+```
+C:\Users\KOT\AppData\Local\Programs\Python\Python39\python.exe C:/Users/KOT/devops-netology/script3.py
+
+C:\Users\KOT\devops-netology\README.md
+C:\Users\KOT\devops-netology\TestFile1
+C:\Users\KOT\devops-netology\TestFile3
+
+Process finished with exit code 0
 ```
 
 ## Обязательная задача 4
@@ -109,12 +128,15 @@ while 1==1 :
         print(str(dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) +' [ERROR] ' + str(host) +' IP mistmatch: '+serv[host]+' '+ip)
       serv[host] = ip
   i++1
-  if i >= 5 :
+  if i >= 3 :
     break
+  t.sleep(2)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
+C:\Users\KOT\AppData\Local\Programs\Python\Python39\python.exe C:/Users/KOT/script2.py
+
 ---------------------------------------- Скрипт запущен ----------------------------------------------------------
 Проверяемые сервисы: {'drive.google.com': '0.0.0.0', 'mail.google.com': '0.0.0.0', 'google.com': '0.0.0.0'}
 ------------------------------------------------------------------------------------------------------------------
