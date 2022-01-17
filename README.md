@@ -77,10 +77,10 @@ result_os = os.popen(' && '.join(bash_command)).read()
 for result in result_os.split('\n'):
     if result.find('fatal') != -1:
         print('\033[31m Каталог \033[1m '+cmd+'\033[0m\033[31m не является GIT репозиторием\033[0m')
-    if result.find('изменено') != -1:
-        prepare_result = result.replace('\tизменено: ', '')
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified: ', '')
         prepare_result = prepare_result.replace(' ', '')
-        print(cmd+prepare_result)
+        print(cmd+':'+prepare_result)
 print('\033[0m')
 ```
 
@@ -95,9 +95,9 @@ Process finished with exit code 0
 ```
 C:\Users\KOT\AppData\Local\Programs\Python\Python39\python.exe C:/Users/KOT/devops-netology/script3.py
 
-C:\Users\KOT\devops-netology\README.md
-C:\Users\KOT\devops-netology\TestFile1
-C:\Users\KOT\devops-netology\TestFile3
+C:\Users\KOT\devops-netology:README.md
+C:\Users\KOT\devops-netology:TestFile1
+C:\Users\KOT\devops-netology:TestFile3
 
 Process finished with exit code 0
 ```
